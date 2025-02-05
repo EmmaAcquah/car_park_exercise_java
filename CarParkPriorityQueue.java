@@ -20,6 +20,10 @@ public class CarParkPriorityQueue {
 
     public PriorityQueue<Integer> checkAvailableParkingSlots() {
         return availableParkingSlots;
+    public HashMap<Integer, String> getParkedCars() {
+        return parkedCars;
+    }
+
     }
 
     public Integer parkCar(String licensePlateNumber) throws Exception {
