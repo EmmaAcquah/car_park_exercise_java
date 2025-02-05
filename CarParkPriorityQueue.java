@@ -16,7 +16,11 @@ public class CarParkPriorityQueue {
     }
 
     public Integer parkCar() throws Exception {
-        return availableParkingSlots.poll();
+        if (availableParkingSlots.isEmpty()) {
+            throw new Exception("No available parking slots. Car not parked.");
+        } else {
+            return availableParkingSlots.poll();
+        }
     }
 
     public void freeParkingSlot(Integer parkingSlotNumber) {
