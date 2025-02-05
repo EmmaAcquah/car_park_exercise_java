@@ -4,10 +4,14 @@ public class CarParkPriorityQueue {
 
     private PriorityQueue<Integer> availableParkingSlots;
     private int capacity;
+    private HashMap<Integer, String> parkedCars;
 
     public CarParkPriorityQueue(int capacity) {
         this.availableParkingSlots = new PriorityQueue<>(capacity);
         this.capacity = capacity;
+//        this.parkedCars = new HashMap<>(capacity); // does that init work?
+        this.parkedCars = new HashMap<>(); // does that init work?
+
         for (int i = 1; i <= capacity; i++) {
             availableParkingSlots.add(i);
         }
