@@ -3,9 +3,11 @@ import java.util.PriorityQueue;
 public class CarParkPriorityQueue {
 
     private PriorityQueue<Integer> availableParkingSlots;
+    private int capacity;
 
     public CarParkPriorityQueue(int capacity) {
         this.availableParkingSlots = new PriorityQueue<>(capacity);
+        this.capacity = capacity;
         for (int i = 1; i <= capacity; i++) {
             availableParkingSlots.add(i);
         }
@@ -23,8 +25,12 @@ public class CarParkPriorityQueue {
         }
     }
 
-    public void freeParkingSlot(Integer parkingSlotNumber) {
-        availableParkingSlots.add(parkingSlotNumber);
+    public void freeParkingSlot(Integer parkingSlotNumber) throws Exception {
+        if (parkingSlotNumber > capacity || parkingSlotNumber <= 0) {
+            throw new Exception("Invalid parking slot number.");
+        } else {
+            availableParkingSlots.add(parkingSlotNumber);
+        }
     }
 
 }
