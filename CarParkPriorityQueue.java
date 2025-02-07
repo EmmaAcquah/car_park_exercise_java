@@ -3,11 +3,9 @@ import java.util.PriorityQueue;
 
 public class CarParkPriorityQueue {
 
-//    private PriorityQueue<Integer> availableParkingSlots;
     private PriorityQueue<Integer> availableParkingSlots;
     private int capacity;
     private HashMap<Integer, String> parkedCars;
-//    private HashMap<Integer, String> reservedParkingSlots;
     private HashMap<String, Integer> reservedParkingSlots;
 
     public CarParkPriorityQueue(int capacity) {
@@ -31,13 +29,11 @@ public class CarParkPriorityQueue {
         } else {
             return availableParkingSlots;
         }
-//        return availableParkingSlots;
     }
 
     public Integer parkCar(String licensePlateNumber) throws Exception {
         if (availableParkingSlots.isEmpty()) {
             throw new Exception("No available parking slots.");
-//        } else if (reservedParkingSlots.containsValue(licensePlateNumber)) {
         } else if (reservedParkingSlots.containsKey(licensePlateNumber)) {
             Integer parkingSlotNumber = reservedParkingSlots.get(licensePlateNumber);
             parkedCars.put(parkingSlotNumber, licensePlateNumber);
@@ -67,7 +63,6 @@ public class CarParkPriorityQueue {
         }
 
         Integer nearestParkingSlot = availableParkingSlots.poll();
-//        reservedParkingSlots.put(nearestParkingSlot, licensePlateNumber);
         reservedParkingSlots.put(licensePlateNumber, nearestParkingSlot);
 
         return nearestParkingSlot;
