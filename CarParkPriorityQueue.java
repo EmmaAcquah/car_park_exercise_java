@@ -23,48 +23,52 @@ public class CarParkPriorityQueue {
         return parkedCars;
     }
 
-    public PriorityQueue<Integer> checkAvailableParkingSlots() throws Exception{
+    public PriorityQueue<Integer> checkAvailableParkingSlots() /*throws Exception*/ {
         if (availableParkingSlots.isEmpty()) {
-            throw new Exception("No available parking slots");
-        } else {
-            return availableParkingSlots;
+            System.out.println("No available parking slots.");
+//            throw new Exception("No available parking slots.");
         }
+        return availableParkingSlots;
     }
 
-    public Integer parkCar(String licensePlateNumber) throws Exception {
+    public Integer parkCar(String licensePlateNumber) /*throws Exception*/ {
         if (availableParkingSlots.isEmpty()) {
-            throw new Exception("No available parking slots.");
+            System.out.println("No available parking slots.");
+//            throw new Exception("No available parking slots.");
         } else if (reservedParkingSlots.containsKey(licensePlateNumber)) {
             Integer parkingSlotNumber = reservedParkingSlots.get(licensePlateNumber);
+
             parkedCars.put(parkingSlotNumber, licensePlateNumber);
             reservedParkingSlots.remove(licensePlateNumber);
             return parkingSlotNumber;
-        } else {
+        }
             Integer parkingSlotNumber = availableParkingSlots.poll();
             parkedCars.put(parkingSlotNumber, licensePlateNumber);
             return parkingSlotNumber;
-        }
     }
 
-    public void freeParkingSlot(Integer parkingSlotNumber, String licensePlateNumber) throws Exception {
+    public void freeParkingSlot(Integer parkingSlotNumber, String licensePlateNumber) /*throws Exception*/ {
         if (parkingSlotNumber > capacity || parkingSlotNumber <= 0) {
-            throw new Exception("Invalid parking slot number.");
+            System.out.println("Invalid parking slot number. Parking slot not freed.");
+//            throw new Exception("Invalid parking slot number.");
         } else if (!parkedCars.get(parkingSlotNumber).equals(licensePlateNumber)) {
-            throw new Exception("Invalid license plate number");
+            System.out.println("Invalid license plate number. Parking slot not freed.");
+//            throw new Exception("Invalid license plate number.");
         } else {
             availableParkingSlots.add(parkingSlotNumber);
             parkedCars.remove(parkingSlotNumber);
+            System.out.println("Parking slot freed.");
         }
     }
 
-    public Integer reserveParkingSlot(String licensePlateNumber) throws Exception {
+    public Integer reserveParkingSlot(String licensePlateNumber) /*throws Exception*/ {
         if (availableParkingSlots.isEmpty()) {
-            throw new Exception("No available parking slots.");
+            System.out.println("No available parking slots.");
+//            throw new Exception("No available parking slots.");
         }
 
         Integer nearestParkingSlot = availableParkingSlots.poll();
         reservedParkingSlots.put(licensePlateNumber, nearestParkingSlot);
-
         return nearestParkingSlot;
     }
 
