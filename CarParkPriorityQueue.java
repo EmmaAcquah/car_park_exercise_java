@@ -72,4 +72,30 @@ public class CarParkPriorityQueue {
         return nearestParkingSlot;
     }
 
+    public void displayCarParkGrid() {
+        int gridWidth = (int) Math.ceil((double) Math.sqrt(capacity));
+        int gridHeight = (int) Math.ceil((double) capacity / gridWidth);
+
+        int parkingSlotCounter = 1;
+
+        for (int i = 1; i <= gridHeight; i++) {
+            StringBuilder rowString = new StringBuilder(" | ");
+
+            for (int j = 1; j <= gridWidth; j++) {
+                if (parkingSlotCounter <= capacity) {
+                    if (!reservedParkingSlots.containsValue(parkingSlotCounter) && !parkedCars.containsKey(parkingSlotCounter) ) { // Available if not in either reservedSlots or parkedCars HashMaps
+                        rowString.append(parkingSlotCounter);
+                        rowString.append(" | "); // prints weird sometimes - fix
+                        parkingSlotCounter++;
+                    } else {
+                        rowString.append("X"); // print X instead of the slotNumber, change to print R for reserved
+                        rowString.append(" | ");
+                        parkingSlotCounter++;
+                    }
+                }
+            }
+            System.out.println(rowString.toString());
+        }
+    }
+
 }
