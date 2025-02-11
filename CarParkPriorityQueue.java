@@ -3,14 +3,14 @@ import java.util.PriorityQueue;
 
 public class CarParkPriorityQueue {
 
-    private PriorityQueue<Integer> availableParkingSlots;
     private int capacity;
+    private PriorityQueue<Integer> availableParkingSlots;
     private HashMap<Integer, String> parkedCars;
     private HashMap<String, Integer> reservedParkingSlots;
 
     public CarParkPriorityQueue(int capacity) {
-        this.availableParkingSlots = new PriorityQueue<>(capacity);
         this.capacity = capacity;
+        this.availableParkingSlots = new PriorityQueue<>(capacity);
         this.parkedCars = new HashMap<>();
         this.reservedParkingSlots = new HashMap<>();
 
@@ -73,7 +73,7 @@ public class CarParkPriorityQueue {
     }
 
     public void displayCarParkGrid() {
-        int gridWidth = (int) Math.ceil((double) Math.sqrt(capacity));
+        int gridWidth = (int) Math.ceil(Math.sqrt(capacity));
         int gridHeight = (int) Math.ceil((double) capacity / gridWidth);
 
         int parkingSlotCounter = 1;
@@ -83,16 +83,18 @@ public class CarParkPriorityQueue {
 
             for (int j = 1; j <= gridWidth; j++) {
                 if (parkingSlotCounter <= capacity) {
-                    if (!reservedParkingSlots.containsValue(parkingSlotCounter) && !parkedCars.containsKey(parkingSlotCounter) ) { // Available if not in either reservedSlots or parkedCars HashMaps
-                        rowString.append(parkingSlotCounter);
+                    if(reservedParkingSlots.containsValue(parkingSlotCounter)) {
+                        rowString.append("R");
+                    } else if (parkedCars.containsKey(parkingSlotCounter)) {
+                        rowString.append("X");
                     } else {
-                        rowString.append("X"); // print X instead of the slotNumber, change to print R for reserved
+                        rowString.append(parkingSlotCounter);
                     }
                     rowString.append(" | ");
                     parkingSlotCounter++;
                 }
             }
-            System.out.println(rowString.toString());
+            System.out.println(rowString);
         }
     }
 
