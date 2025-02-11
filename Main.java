@@ -1,9 +1,8 @@
-package PACKAGE_NAME;
 
 public class Main {
 
     public static void main(String[] args) /*throws Exception*/ {
-        CarParkQueue carParkQueue = new CarParkQueue(5);
+        CarParkPriorityQueue carParkQueue = new CarParkPriorityQueue(5);
         testCarParkPriorityQueueNoExceptions();
     }
 
