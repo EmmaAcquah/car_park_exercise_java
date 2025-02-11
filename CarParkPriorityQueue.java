@@ -19,9 +19,6 @@ public class CarParkPriorityQueue {
         }
     }
 
-    public HashMap<Integer, String> getParkedCars() {
-        return parkedCars;
-    }
 
     public PriorityQueue<Integer> checkAvailableParkingSlots() /*throws Exception*/ {
         if (availableParkingSlots.isEmpty()) {
