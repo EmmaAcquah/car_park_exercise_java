@@ -85,13 +85,11 @@ public class CarParkPriorityQueue {
                 if (parkingSlotCounter <= capacity) {
                     if (!reservedParkingSlots.containsValue(parkingSlotCounter) && !parkedCars.containsKey(parkingSlotCounter) ) { // Available if not in either reservedSlots or parkedCars HashMaps
                         rowString.append(parkingSlotCounter);
-                        rowString.append(" | "); // prints weird sometimes - fix
-                        parkingSlotCounter++;
                     } else {
                         rowString.append("X"); // print X instead of the slotNumber, change to print R for reserved
-                        rowString.append(" | ");
-                        parkingSlotCounter++;
                     }
+                    rowString.append(" | ");
+                    parkingSlotCounter++;
                 }
             }
             System.out.println(rowString.toString());
