@@ -27,6 +27,7 @@ public class CarParkPriorityQueue {
         if (availableParkingSlots.isEmpty()) {
             System.out.println("No available parking slots.");
 //            throw new Exception("No available parking slots.");
+            return null;
         }
         return availableParkingSlots;
     }
@@ -35,6 +36,7 @@ public class CarParkPriorityQueue {
         if (availableParkingSlots.isEmpty()) {
             System.out.println("No available parking slots.");
 //            throw new Exception("No available parking slots.");
+            return null;
         } else if (reservedParkingSlots.containsKey(licensePlateNumber)) {
             Integer parkingSlotNumber = reservedParkingSlots.get(licensePlateNumber);
 
@@ -65,6 +67,7 @@ public class CarParkPriorityQueue {
         if (availableParkingSlots.isEmpty()) {
             System.out.println("No available parking slots.");
 //            throw new Exception("No available parking slots.");
+            return null;
         }
 
         Integer nearestParkingSlot = availableParkingSlots.poll();
